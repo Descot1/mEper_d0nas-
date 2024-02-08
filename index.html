@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://play-lh.googleusercontent.com/6e12kIL0JGGDYTH-8nEl23GzXwKC4b-_UFWwJCycgLs7RGuIbFbvh7zPD7bic58Gz2ok') no-repeat center center fixed;
+            background-size: 50%; /* Ajusta el tamaño de la imagen de fondo */
+        }
+
+        h1, button {
+            margin: 10px;
+            z-index: 1; /* Asegura que los elementos estén sobre el fondo */
+        }
+
+        #noButton {
+            position: absolute;
+        }
+    </style>
+    <title>MePerd0 nas?</title>
+</head>
+<body>
+    <h1>MePerd0 nas?</h1>
+    <!-- Botón "Sí" -->
+    <button onclick="pedirPerdon()">Sí</button>
+    <!-- Botón "No" con evento para moverse aleatoriamente -->
+    <button id="noButton" onmouseover="moverBoton()" onclick="rechazarPerdon()">No</button>
+
+    <script>
+        function pedirPerdon() {
+            alert("Yo también te amo <3");
+        }
+
+        function rechazarPerdon() {
+            alert("Oh no, ¿seguro que no me perdonas? :(");
+            moverBoton(); // Llamar a moverBoton() después de mostrar el mensaje de rechazo
+        }
+
+        function moverBoton() {
+            var ventanaAncho = window.innerWidth;
+            var ventanaAlto = window.innerHeight;
+
+            // Aumentar el rango a 180x180 px alrededor del centro
+            var rangoX = [ventanaAncho / 2 - 90, ventanaAncho / 2 + 90];
+            var rangoY = [ventanaAlto / 2 - 90, ventanaAlto / 2 + 90];
+
+            // Generar coordenadas dentro del rango
+            var nuevoX = Math.floor(Math.random() * (rangoX[1] - rangoX[0]) + rangoX[0]);
+            var nuevoY = Math.floor(Math.random() * (rangoY[1] - rangoY[0]) + rangoY[0]);
+
+            document.getElementById("noButton").style.left = nuevoX + "px";
+            document.getElementById("noButton").style.top = nuevoY + "px";
+        }
+    </script>
+</body>
+</html>
