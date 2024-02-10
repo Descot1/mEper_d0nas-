@@ -3,61 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-------</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
-            background: url('https://play-lh.googleusercontent.com/6e12kIL0JGGDYTH-8nEl23GzXwKC4b-_UFWwJCycgLs7RGuIbFbvh7zPD7bic58Gz2ok') no-repeat center center fixed;
-            background-size: 50%; /* Ajusta el tamaño de la imagen de fondo */
+            padding: 0;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/853/945/279/anime-just-because-city-sunset-hd-wallpaper-preview.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1200px; /* Máximo ancho de la página */
+            margin-left: auto;
+            margin-right: auto;
+            color: white; /* Ajusta el color del texto para mayor legibilidad */
         }
 
-        h1, button {
-            margin: 10px;
-            z-index: 1; /* Asegura que los elementos estén sobre el fondo */
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.7); /* Fondo semi-transparente para legibilidad del encabezado */
         }
 
-        #noButton {
-            position: absolute;
+        section {
+            flex: 1;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para legibilidad del contenido */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 10px;
+            justify-items: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .galeria img.clicked {
+            width: 60%; /* Modifica el porcentaje según sea necesario */
+            height: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .galeria img.clicked:hover {
+            transform: scale(1.1);
         }
     </style>
-    <title>MePerd0 nas?</title>
 </head>
 <body>
-    <h1>MePerd0 nas?</h1>
-    <!-- Botón "Sí" -->
-    <button onclick="pedirPerdon()">Sí</button>
-    <!-- Botón "No" con evento para moverse aleatoriamente -->
-    <button id="noButton" onmouseover="moverBoton()" onclick="rechazarPerdon()">No</button>
+
+    <header>
+        <h1>------</h1>
+    </header>
+
+    <!-- Sección de Recuerdos (a la izquierda) -->
+    <section id="fotos">
+        <h2>-----</h2>
+        <div class="galeria">
+            <img src="https://media.discordapp.net/attachments/1205308638470864946/1205308759715618847/image.png?ex=65d7e641&is=65c57141&hm=ff6e81994f30c63074ac563649b60d9636409dce2b9b43a9b8eeec6eceebd546&=&format=webp&quality=lossless&width=842&height=473" alt="Recuerdo 1" onclick="expandImage(this)">
+            <img src="https://media.discordapp.net/attachments/1205308638470864946/1205308721463435325/image.png?ex=65d7e638&is=65c57138&hm=ca90c0d5f1bc77746e931f8bd7958e3d9721f452c627c545a70a128a17ce8ee8&=&format=webp&quality=lossless&width=842&height=473" alt="Recuerdo 2" onclick="expandImage(this)">
+            <!-- Agrega más fotos según sea necesario -->
+        </div>
+    </section>
+
+    <!-- Sección de Playlist de Spotify (a la derecha) -->
+    <section id="playlist" class="playlist">
+        <h2>-----</h2>
+        <!-- Agrega el widget de Spotify o un enlace a tu playlist -->
+        <!-- Puedes obtener el código del widget desde el sitio web de Spotify -->
+        <div>
+            <!-- Agrega aquí el widget de Spotify o un enlace -->
+        </div>
+    </section>
+
+    <!-- Sección de Reproducción de Audios (a la derecha) -->
+    <section id="audios" class="audios">
+        <h2>------</h2>
+        <audio controls>
+            <source src="audio1.mp3" type="audio/mp3">
+            Tu navegador no soporta la etiqueta de audio.
+        </audio>
+        <!-- Agrega más etiquetas 'audio' según sea necesario -->
+    </section>
+
+    <!-- Otras secciones -->
 
     <script>
-        function pedirPerdon() {
-            alert("Yo también te amo <3");
-        }
-
-        function rechazarPerdon() {
-         
-            moverBoton(); // Llamar a moverBoton() después de mostrar el mensaje de rechazo
-        }
-
-        function moverBoton() {
-            var ventanaAncho = window.innerWidth;
-            var ventanaAlto = window.innerHeight;
-
-            // Aumentar el rango a 180x180 px alrededor del centro
-            var rangoX = [ventanaAncho / 2 - 90, ventanaAncho / 2 + 90];
-            var rangoY = [ventanaAlto / 2 - 90, ventanaAlto / 2 + 90];
-
-            // Generar coordenadas dentro del rango
-            var nuevoX = Math.floor(Math.random() * (rangoX[1] - rangoX[0]) + rangoX[0]);
-            var nuevoY = Math.floor(Math.random() * (rangoY[1] - rangoY[0]) + rangoY[0]);
-
-            document.getElementById("noButton").style.left = nuevoX + "px";
-            document.getElementById("noButton").style.top = nuevoY + "px";
+        function expandImage(element) {
+            element.classList.toggle('clicked');
         }
     </script>
+
 </body>
 </html>
